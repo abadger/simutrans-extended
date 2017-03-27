@@ -454,7 +454,10 @@ void leitung_t::rdwr(loadsave_t *file)
 	obj_t::rdwr(file);
 	if(file->is_saving()) 
 	{
-		value = (uint32)get_net(); //  This seems to be functionless, but should be preserved for compatibility. It likewise appears functionless in Standard.
+		//  This seems to be functionless, but should be preserved for compatibility. It likewise appears functionless in Standard.
+		//  If we need to use this we need to add an actual id to the powernet_t and use that here instead of the memory address of the powernet_t instance.
+		// value = (uint64)get_net(); 
+        value = 0;
 		file->rdwr_long(value);
 		koord city_pos = koord::invalid;
 		if(city != NULL)
